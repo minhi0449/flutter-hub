@@ -3,6 +3,12 @@ import 'package:class_f_story/data/gvm/session_gvm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/**
+ * 날짜 : 2025.02.05 (수)
+ * 이름 : 김민희
+ * 내용 : 사이드 메뉴(Drawer) - 글쓰기/로그아웃 기능 위젯 구현
+ */
+
 class CustomDrawer extends ConsumerWidget {
   // ScaffoldState 스캐아폴드 상태관리 해주는 녀석
   final GlobalKey<ScaffoldState> scaffoldKey;
