@@ -1,4 +1,5 @@
 import 'package:class_f_story/ui/pages/post/list_page/widgets/post_list_body.dart';
+import 'package:class_f_story/ui/pages/post/list_page/widgets/post_list_body_temp.dart';
 import 'package:class_f_story/ui/widgets/custom_drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,7 @@ class PostListPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('f-story'),
         ),
+        body: PostListBodyTemp(),
       ),
     );
   }

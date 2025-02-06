@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../_core/utils/my_http.dart';
+import '../repositoy/post_repository.dart';
 
 /*
 
@@ -23,9 +24,9 @@ import '../../_core/utils/my_http.dart';
 class PostWriteViewModel
     extends Notifier<(String? title, String? content, bool isWriteCompleted)> {
   // 뷰 모델에서 컨텍스트를 사용하는 방안
-  final mContext = navigatorkey.currentState!;
+  final mContext = navigatorkey.currentContext!;
   // userRepository 를 * 컴포지션 관계로 선언을 하는데 -> 2개 부를 필요 없고 하나만 선언해준다는 의미로 const 적어줌
-  UserRepository userRepository = const UserRepository();
+  PostRepository postRepository = const PostRepository();
 
   // 상태값을 초기화 해야 된다.
   // @override
@@ -52,14 +53,14 @@ class PostWriteViewModel
       // 게시글 API 요청하는 클래스 (post_)
       // 데이터 가공 처리
       final body = {"title": title, "content": content};
-
-      Response response = await dio.post('/api/post', data: body);
-      Map<String, dynamic> responseBody = response.data;
+      Map<String, dynamic> resBody = await postRepository.save(body);
+      // Response response = await dio.post('/api/post', data: body);
+      // Map<String, dynamic> responseBody = response.data;
 
       // 2.
-      if (!responseBody['success']) {
+      if (!resBody['success']) {
         ExceptionHander.handerException(
-            responseBody['errorMassage'], StackTrace.current);
+            resBody['errorMassage'], StackTrace.current);
         return; // 실행의 제어권 반납
       }
 
@@ -69,8 +70,19 @@ class PostWriteViewModel
       ScaffoldMessenger.of(mContext)
           .showSnackBar(SnackBar(content: Text('게시글 등록 완료')));
       // 상테 갱신
+      state = (null, null, true);
     } catch (e, stackTrace) {
       ExceptionHander.handerException('게시글 등록 시 오류 발생', stackTrace);
     } // end of catch
   } // end of createPost (= 게시글 작성 행위)
 }
+
+// 창고 관리 만들기
+// 창고 관리 만들기
+final postWriteViewModelProvider = NotifierProvider<
+    PostWriteViewModel,
+    (
+      String? title,
+      String? content,
+      bool isWriteCompleted
+    )>(() => PostWriteViewModel());
