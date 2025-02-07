@@ -1,7 +1,7 @@
 import 'package:class_f_story/_core/utils/exception_handler.dart';
 import 'package:class_f_story/_core/utils/my_http.dart';
 import 'package:class_f_story/data/model/session_user.dart';
-import 'package:class_f_story/data/repositoy/user_repository.dart';
+import 'package:class_f_story/data/repository/user_repository.dart';
 import 'package:class_f_story/main.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,4 +1,4 @@
-import 'package:class_f_story/data/repositoy/user_repository.dart';
+import 'package:class_f_story/data/repository/user_repository.dart';
 import '../utils/logger.dart';
 import 'package:flutter/material.dart';
 
