@@ -4,7 +4,7 @@
 /// 그리고  상태 관리까지
 
 import 'package:class_f_story/_core/utils/exception_handler.dart';
-import 'package:class_f_story/data/repositoy/user_repository.dart';
+import 'package:class_f_story/data/repository/user_repository.dart';
 import 'package:class_f_story/main.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../_core/utils/my_http.dart';
-import '../repositoy/post_repository.dart';
+import '../repository/post_repository.dart';
 
 /*
   날짜 : 2025.02.06 (목)
@@ -70,7 +70,7 @@ class PostWriteViewModel
       // 게시글 완성 메세지
       ScaffoldMessenger.of(mContext)
           .showSnackBar(SnackBar(content: Text('게시글 등록 완료')));
-      // 상테 갱신
+      // 상태 갱신
       state = (null, null, true);
     } catch (e, stackTrace) {
       ExceptionHander.handerException('게시글 등록 시 오류 발생', stackTrace);
