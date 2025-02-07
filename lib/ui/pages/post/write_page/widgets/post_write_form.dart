@@ -6,6 +6,12 @@ import 'package:class_f_story/ui/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/*
+  날짜 : 2025.02.06 (목)
+  이름 : 김민희
+  내용 : 게시글 작성 폼 구현 - 제목, 내용 입력 필드와 글쓰기 버튼으로 구성된 화면
+ */
+
 // 게시글 작성하는 페이지
 class PostWriteForm extends ConsumerWidget {
   // 폼의 상태, 유효성 검사 ...save() 호출

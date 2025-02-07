@@ -2,6 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+/*
+  날짜 : 2025.02.06 (목)
+  이름 : 김민희
+  내용 : 당기기(새로고침) 및 무한 스크롤(페이징) 기능을 포함한 게시글 목록 UI 구현
+ */
+
 class PostListBodyTemp extends StatefulWidget {
   const PostListBodyTemp({super.key});
 
