@@ -15,8 +15,9 @@ import '../../_core/utils/my_http.dart';
 import '../repositoy/post_repository.dart';
 
 /*
-
-
+  날짜 : 2025.02.06 (목)
+  이름 : 김민희
+  내용 : 게시글 작성 뷰 모델 구현 (상태 관리 및 게시글 저장 기능 포함)
  */
 
 // dto 만들기 싫어서 배웠던 문법 -> 레코드
@@ -77,7 +78,6 @@ class PostWriteViewModel
   } // end of createPost (= 게시글 작성 행위)
 }
 
-// 창고 관리 만들기
 // 창고 관리 만들기
 final postWriteViewModelProvider = NotifierProvider<
     PostWriteViewModel,
