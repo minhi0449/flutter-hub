@@ -60,6 +60,8 @@ class PostList {
           .toList(),
     );
   }
+
+  PostList? copyWith({required List<Post> post}) {}
 }
 // 중괄호가 없다는 뜻은?
 // try-catch를 못한다는 뜻이고
