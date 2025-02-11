@@ -3,6 +3,7 @@
 
 
 import 'package:class_f_story/_core/utils/exception_handler.dart';
+import 'package:class_f_story/data/gvm/post_event_notifier.dart';
 import 'package:class_f_story/data/model/post_list.dart';
 import 'package:class_f_story/data/repository/post_repository.dart';
 import 'package:class_f_story/main.dart';
@@ -42,6 +43,26 @@ class PostListViewModel extends AutoDisposeNotifier<PostList?> {
     // 초기 init 메서드 호출
     // API 통신 요청 처리
     init();
+
+    // 이벤트 리스너 등록
+    // ref.listen<PostAction>(postEventProvider, (previous, nex){}){
+    //
+    // }
+
+    ref.listen<PostAction>(
+      postEventProvider,
+      (previous, next) {
+        if (next != PostAction.none) {
+          // 이벤트가 발생 되었음.
+          // 게시글 생성 이벤트
+          // 새로고침 이벤트 발생
+          init();
+          // 이벤트 초기화 처리 해야 중복 발생이 안 됨
+          ref.read(postEventProvider.notifier).reset;
+          // PostAction.none 돌아 간다.
+        }
+      },
+    );
     return null;
   }
 

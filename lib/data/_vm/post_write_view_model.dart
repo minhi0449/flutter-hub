@@ -4,6 +4,7 @@
 /// 그리고  상태 관리까지
 
 import 'package:class_f_story/_core/utils/exception_handler.dart';
+import 'package:class_f_story/data/gvm/post_event_notifier.dart';
 import 'package:class_f_story/data/repository/user_repository.dart';
 import 'package:class_f_story/main.dart';
 import 'package:dio/dio.dart';
@@ -70,8 +71,12 @@ class PostWriteViewModel
       // 게시글 완성 메세지
       ScaffoldMessenger.of(mContext)
           .showSnackBar(SnackBar(content: Text('게시글 등록 완료')));
-      // 상태 갱신
+      // 상태 갱신 처리
       state = (null, null, true);
+
+      // 리버팟 장점 ->
+      // postEventProvider (none.. 상태를 postCreate 상태를 변경 처리)
+      ref.read(postEventProvider.notifier).postCreate();
     } catch (e, stackTrace) {
       ExceptionHander.handerException('게시글 등록 시 오류 발생', stackTrace);
     } // end of catch
