@@ -1,6 +1,7 @@
 // 뷰 모델을 동적으로 생성해야 한다.
 // 동적으로 생성해야 (매개변수 전달 받아서 생성해야 한다.)
 import 'package:class_f_story/_core/utils/exception_handler.dart';
+import 'package:class_f_story/data/gvm/post_event_notifier.dart';
 import 'package:class_f_story/data/model/post_detail.dart';
 import 'package:class_f_story/data/repository/post_repository.dart';
 import 'package:class_f_story/main.dart';
@@ -40,10 +41,12 @@ class PostDetailViewModel extends AutoDisposeFamilyNotifier<PostDetail?, int> {
         );
         return;
       }
+      logger.d('1 :  ${responseBody['response']}');
       // 성공이라면
       PostDetail model = PostDetail.fromMap(responseBody['response']);
       state = model;
     } catch (e, stackTrace) {
+      logger.e(e);
       ExceptionHander.handerException('게시글 상세보기 ', stackTrace);
     }
   }
@@ -60,6 +63,10 @@ class PostDetailViewModel extends AutoDisposeFamilyNotifier<PostDetail?, int> {
         );
         return;
       }
+
+      // POST 삭제 이벤트 전파 !!
+      ref.read(postEventProvider.notifier).postDeleted();
+
       // 화면 파괴 시에 뷰모델 자동 파괴됨
       Navigator.pop(mContext);
     } catch (e, stackTrace) {

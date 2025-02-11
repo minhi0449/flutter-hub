@@ -30,7 +30,7 @@ class PostRepository {
   Future<Map<String, dynamic>> findById({required int id}) async {
     // id 값만 던지고, 헤더에 있는 값만 던지면 되니까 응답 코드는 여기까지 작성
     // Response response = await dio.get('api/post/${id}');
-    Response response = await dio.get('api/post/$id');
+    Response response = await dio.get('/api/post/$id');
 
     Map<String, dynamic> responseBody = response.data; // body
     return responseBody;
