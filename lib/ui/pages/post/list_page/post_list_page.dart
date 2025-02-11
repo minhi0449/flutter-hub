@@ -29,7 +29,7 @@ class PostListPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('f-story'),
         ),
-        body: PostListBodyTemp(),
+        body: PostListBody(),
       ),
     );
   }

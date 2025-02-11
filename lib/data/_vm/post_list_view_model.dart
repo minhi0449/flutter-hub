@@ -35,7 +35,7 @@ class PostListViewModel extends AutoDisposeNotifier<PostList?> {
     // onDispose 콜백 등록
     ref.onDispose(
       () {
-        logger.d("PostListViewModel 파괴시 실행됨");
+        logger.d("PostListViewModel 파괴 시 실행됨");
         refreshController.dispose(); // 가비지컬렉션이 바로 일어나지 않으니까!!
       },
     );
